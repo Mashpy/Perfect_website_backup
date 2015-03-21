@@ -1,0 +1,1 @@
+RewriteRule ^(.*?\.sql.gz)$ error.php?url=$1
