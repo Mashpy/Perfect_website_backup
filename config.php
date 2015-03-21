@@ -7,10 +7,10 @@ $mysqldb        = "backupscript";
 $backuphost      = "localhost";
 $backupuser      = "root";
 $backuppass      = "123456";
-$backupdb        = "backupscript";
+$backupdb        = "uniprepdbtest";
 
 $location       = "/home/action/workspace/www";
-$filecountlimit = "";
+$filecountlimit = "5";
 
 $zip = '';
 $targz = '';

@@ -21,14 +21,17 @@ if ($conn->connect_error) {
 echo "Script database Connected Successfully<br>";
 }
 
-$filename = 'dbbackup' . time() . '.sql.gz';
+$filename = 'dbbackup' . time() . '.sql';
 
-exec('mysqldump --user='.$backupuser.' --password='.$backuppass.' --host='.$backuphost.' '.$backupdb.' | gzip -9 > '.$filename);
+exec('mysqldump --user='.$backupuser.' --password='.$backuppass.' --host='.$backuphost.' '.$backupdb.' --skip-comments > '.$filename);
 $file_hash = md5_file($filename);
+
+exec('gzip '.$filename);
+echo $filename = $filename.'.gz';
 
 $query = "SELECT checksum FROM dbbackup WHERE checksum = '$file_hash' ";
 
-echo "checking sum <br>";
+echo "<br> checking sum <br>";
 
 
 if ($result = mysqli_query($conn, $query)) {
